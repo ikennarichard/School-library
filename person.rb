@@ -1,7 +1,7 @@
 class Nameable
   def correct_name
     raise NotImplementedError,
-    "#{self.class} has not implemented method '#{__method__}'"
+          "#{self.class} has not implemented method '#{__method__}'"
   end
 end
 
@@ -55,16 +55,3 @@ class TrimmerDecorator < Decorator
     text.length <= 10 ? text : text[0..9]
   end
 end
-
-def print_result(component)
-  puts "RESULT: #{component.correct_name}"
-end
-
-person = Person.new(22, 'maximilianus')
-print_result(person)
-
-capitalizedPerson = CapitalizeDecorator.new(person)
-print_result(capitalizedPerson)
-
-capitalizedTrimmedPerson = TrimmerDecorator.new(capitalizedPerson)
-print_result(capitalizedTrimmedPerson)
