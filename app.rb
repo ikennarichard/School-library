@@ -83,5 +83,30 @@ class App
     puts ''
     puts '#=>  Book created successfully'
   end
+
+  def create_rental
+    return if books.empty? || people.empty?
+    
+    puts 'Select a book from the following list by number'
+    
+    books.each.with_index(1) { |book, index| puts "#{index}) Title: #{book.title}, Author: #{book.author}" }
+    print 'Choose a book: '
+    selected_book = Integer(gets.chomp) - 1
+    
+    puts '#=> Select a person from the following list by number (no id)'
+    
+    people.each.with_index(1) { |person, index| puts "#{index}) Name: #{person.name} Age: #{person.age} Id: #{person.id}" }
+    print 'Choose a person: '
+    selected_person = Integer(gets.chomp) - 1
+    
+    print 'Date: '
+    selected_date = gets.chomp.to_s
+    
+    rentals << Rental.new(selected_date, books[selected_book], people[selected_person])
+    
+    
+    puts ''
+    puts '#=>  Rental created successfully.'
+    end
   
 end
