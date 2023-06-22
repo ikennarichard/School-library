@@ -1,10 +1,10 @@
-require_relative './app.rb'
+require_relative './app'
 
 def options
   puts ''
   puts 'Welcome to School Library App!'
 
-  puts 'Please choose an option by entering a number: 
+  puts 'Please choose an option by entering a number:
   ',
        '1 - List all books',
        '2 - List all people',
@@ -15,9 +15,7 @@ def options
        '7 - Exit'
 end
 
-
 def select_option(app, num)
-  
   case num
   when '1'
     app.list_all_books
@@ -35,7 +33,6 @@ def select_option(app, num)
     puts 'Invalid option. Please try again'
   end
 end
-
 
 def main
   app = App.new
