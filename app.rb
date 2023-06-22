@@ -114,7 +114,6 @@ class App
 
     rentals << Rental.new(selected_date, books[selected_book], people[selected_person])
 
-
     puts ''
     puts '#=>  Rental created successfully.'
   end
