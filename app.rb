@@ -21,5 +21,13 @@ class App
     end
     puts people.length
   end
+
+  def list_all_people
+    puts '#=> No person added yet' if books.length == 0
+    
+    people.each do |person| puts "#=> [#{person.class}] ID: #{person.id} Name: #{person.name} Age: #{person.age}"
+    end
+    puts people.length
+  end
   
 end
