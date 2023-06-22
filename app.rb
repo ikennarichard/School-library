@@ -120,12 +120,13 @@ class App
 
   def list_rentals
     print 'Enter the Person ID: '
-    id = gets.chomp.strip
+    id = gets.chomp.to_i
 
     rentals.each do |rental|
       if rental.person.id == id
-        puts "#=>  Date: #{rental.date},
-          Book: #{rental.book.title} Author: #{rental.book.author}"
+        puts "#=>  Date: #{rental.date}, Book: #{rental.book.title} Author: #{rental.book.author}"
+      else
+        puts 'Invalid id, please try again'
       end
     end
   end
