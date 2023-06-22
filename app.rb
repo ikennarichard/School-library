@@ -72,5 +72,16 @@ class App
       puts '#=> Teacher created successfully'
     end
   end
+
+  def create_book
+    print 'Title: '
+    title = gets.chomp
+    print 'Author: '
+    author = gets.chomp
+    book = Book.new(title, author)
+    books << book
+    puts ''
+    puts '#=>  Book created successfully'
+  end
   
 end
