@@ -1,9 +1,9 @@
-require_relative './book'
-require_relative './classroom'
-require_relative './person'
-require_relative './rental'
-require_relative './student'
-require_relative './teacher'
+require_relative 'book'
+require_relative 'classroom'
+require_relative 'person'
+require_relative 'rental'
+require_relative 'student'
+require_relative 'teacher'
 
 class App
   attr_accessor :people, :books, :rentals
@@ -58,7 +58,7 @@ class App
     when 'y'
       people << Student.new(nil, age, name)
     else
-      'Invalid option, please try again'
+      '#=> Invalid option, please try again'
     end
 
     puts ''
@@ -66,9 +66,9 @@ class App
   end
 
   def create_person
-    puts 'Wha kind of person you want to create?'
-    puts '(1) Student'
-    puts '(2) Teacher'
+    puts 'What kind of person do you want to create?'
+    puts '1 - Student'
+    puts '2 - Teacher'
     print 'Input number : '
 
     person_type = Integer(gets.chomp)
@@ -95,10 +95,10 @@ class App
   def create_rental
     return if books.empty? || people.empty?
 
-    puts 'Select a book from the following list by number'
+    puts '#=> Select a book from the following list by number'
 
     books.each.with_index(1) { |book, index| puts "#{index}) Title: #{book.title}, Author: #{book.author}" }
-    print 'Choose a book: '
+    print '#=> Choose a book: '
     selected_book = Integer(gets.chomp) - 1
 
     puts '#=> Select a person from the following list by number (no id)'
@@ -106,7 +106,7 @@ class App
     people.each.with_index(1) do |person, index|
       puts "#{index}) Name: #{person.name} Age: #{person.age} Id: #{person.id}"
     end
-    print 'Choose a person: '
+    print '#=> Choose a person: '
     selected_person = Integer(gets.chomp) - 1
 
     print 'Date: '
@@ -115,18 +115,18 @@ class App
     rentals << Rental.new(selected_date, books[selected_book], people[selected_person])
 
     puts ''
-    puts '#=>  Rental created successfully.'
+    print '#=>  Rental created successfully.'
   end
 
   def list_rentals
-    print 'Enter the Person ID: '
+    print '#=> Enter the Person ID: '
     id = gets.chomp.to_i
 
     rentals.each do |rental|
       if rental.person.id == id
         puts "#=>  Date: #{rental.date}, Book: #{rental.book.title} Author: #{rental.book.author}"
       else
-        puts 'Invalid id, please try again'
+        puts '#=> Invalid id, please try again'
       end
     end
   end
