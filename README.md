@@ -69,7 +69,9 @@ For more information on the importance of a professional README for your reposit
 
 ### Key Features <a name="key-features"></a>
 
-- **Blueprint for the person, student and teacher objects**
+- Add user details details
+- Maintain record of rentals
+- Add requirements (books, teachers and students)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -129,8 +131,7 @@ To run tests, run the following command:
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- **[Add basic user interface]**
-- **[Add decorator design pattern]**
+- Delete rental
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
