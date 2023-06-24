@@ -3,16 +3,18 @@ require_relative './app'
 def options
   puts ''
   puts 'Welcome to School Library App!'
+  puts ''
 
-  puts 'Please choose an option by entering a number:
-  ',
-       '1 - List all books',
+  puts '1 - List all books',
        '2 - List all people',
        '3 - Create a person',
        '4 - Create a book',
        '5 - Create a rental',
        '6 - List all of rentals for a given person id',
        '7 - Exit'
+  puts ''
+  puts 'Please choose an option by entering a number: '
+  print '#=> '
 end
 
 def select_option(app, num)
@@ -30,7 +32,8 @@ def select_option(app, num)
   when '6'
     app.list_rentals
   else
-    puts 'Invalid option. Please try again'
+    puts ''
+    puts '#=> Invalid option.(InvalidInputError)'
   end
 end
 
