@@ -69,7 +69,7 @@ For more information on the importance of a professional README for your reposit
 
 ### Key Features <a name="key-features"></a>
 
-- Add user details details
+- Add user details
 - Maintain record of rentals
 - Add requirements (books, teachers and students)
 
