@@ -57,7 +57,7 @@ For more information on the importance of a professional README for your reposit
 
 # 📖 [School Library] <a name="about-project"></a>
 
-**[School library]**  is an app that helps you manage books in the library. It helps you keep track of books, teachers, students as wells as records of who borrowed a book/s at any given time. Built with Ruby
+School library is a tool that helps you manage books in your library. It tracks books, teachers, students as wells as records of who borrowed a book/s at any given time.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -104,6 +104,14 @@ Clone this repository to your desired folder:
   cd my-folder
   git clone https://github.com/ikennarichard/School-library.git
 ```
+
+Run the main file:
+
+```sh
+ruby ./main.rb
+
+```
+
 
 
 ### Run tests
