@@ -1,0 +1,2 @@
+# make sure all ruby files eol are LF 
+*.rb text eol=lf
