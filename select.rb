@@ -18,23 +18,26 @@ module Select
   end
 
   def select_option(app, num)
-    case num
-    when '1'
-      app.list_all_books
-    when '2'
-      app.list_all_people
-    when '3'
-      app.create_person
-    when '4'
-      app.create_book
-    when '5'
-      app.create_rental
-    when '6'
-      app.list_rentals
-    when '7'
-      puts 'Thanks for using the app. Goodbye'
+    actions = {
+      '1' => :list_all_books,
+      '2' => :list_all_people,
+      '3' => :create_person,
+      '4' => :create_book,
+      '5' => :create_rental,
+      '6' => :list_rentals,
+      '7' => :exit_app
+    }
+
+    action = actions[num]
+
+    if action
+      app.send(action)
     else
-      puts '#=> Invalid option.(InvalidInputError)'
+      puts "\n#=> Invalid input Error\n"
     end
+  end
+
+  def exit_app
+    puts "\nThanks for using the app. Goodbye\n"
   end
 end

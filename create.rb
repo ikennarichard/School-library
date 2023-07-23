@@ -34,12 +34,10 @@ module Create
     else
       '#=> Invalid option, please try again'
     end
-
     people << { 'id' => student.id, 'name' => student.name, 'age' => student.age,
                 'parent_permission' => student.parent_permission, 'rentals' => student.rentals }
 
     File.write('json/person.json', JSON.generate(people))
-
     puts ''
     puts '#=> Student created successfully'
     p student
@@ -76,29 +74,68 @@ module Create
   def create_rental
     return if books.empty? || people.empty?
 
-    puts '#=> Select a book from the following list by number'
+    selected_book = select_book
+    return unless selected_book
 
-    books.each.with_index(1) { |book, index| puts "#{index}) Title: #{book['title']}, Author: #{book['author']}" }
+    selected_person = select_person
+    return unless selected_person
+
+    selected_date = input_date
+    return unless selected_date
+
+    rental = create_new_rental(selected_book, selected_person, selected_date)
+
+    update_rental_records(rental)
+
+    puts "\n#=> Rental created successfully.\n\n"
+  end
+
+  def select_book
+    puts "\n#=> Select a book from the following list by number\n"
+
+    books.each.with_index(1) do |book, index|
+      puts "#{index}) Title: #{book['title']}, Author: #{book['author']}"
+    end
+
     print '#=> Choose a book: '
     selected_book = Integer(gets.chomp) - 1
-    rental_book = Book.new(books[selected_book]['title'], books[selected_book]['author'])
 
-    puts '#=> Select a person from the following list by number (not id)'
+    return books[selected_book] if selected_book.between?(0, books.length - 1)
+
+    puts "\nInvalid choice. Please select a valid book.\n"
+    nil
+  end
+
+  def select_person
+    puts "\n#=> Select a person from the following list by number (not id)\n"
 
     people.each.with_index(1) do |person, index|
       puts "#{index}) PersonID: #{person['id']} Name: #{person['name']}"
     end
+
     print '#=> Choose a person: '
     selected_person = Integer(gets.chomp) - 1
-    renter = Person.new(people[selected_person]['age'], people[selected_person]['name'],
-                        people[selected_person]['parent_permission'])
-    renter.id = people[selected_person]['id']
 
+    return people[selected_person] if selected_person.between?(0, people.length - 1)
+
+    puts "\nInvalid choice. Please select a valid person.\n"
+    nil
+  end
+
+  def input_date
     print 'Date (dd/mm/yy): '
-    selected_date = gets.chomp.to_s
+    gets.chomp.to_s
+  end
 
-    rental = Rental.new(selected_date, rental_book, renter)
+  def create_new_rental(selected_book, selected_person, selected_date)
+    rental_book = Book.new(selected_book['title'], selected_book['author'])
+    renter = Person.new(selected_person['age'], selected_person['name'], selected_person['parent_permission'])
+    renter.id = selected_person['id']
 
+    Rental.new(selected_date, rental_book, renter)
+  end
+
+  def update_rental_records(rental)
     rentals << { 'date' => rental.date, 'book' => rental.book.title, 'person' => rental.person.name }
 
     people.each do |item|
@@ -108,9 +145,5 @@ module Create
 
     File.write('json/rentals.json', JSON.generate(rentals))
     File.write('json/person.json', JSON.generate(people))
-
-    puts ''
-    print '#=>  Rental created successfully.'
-    puts ''
   end
 end
