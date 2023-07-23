@@ -40,7 +40,6 @@ module Create
     File.write('json/person.json', JSON.generate(people))
     puts ''
     puts '#=> Student created successfully'
-    p student
   end
 
   def create_person
