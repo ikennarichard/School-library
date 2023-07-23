@@ -112,13 +112,13 @@ ruby ./main.rb
 
 ```
 
-
-
 ### Run tests
 
 To run tests, run the following command:
 
-- Not available for now
+```sh
+rspec
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -130,7 +130,7 @@ To run tests, run the following command:
 👤 **Ikenna Richard**
 
 - GitHub: [ikennarichard](https://github.com/ikennarichard)
-- LinkedIn: [ikenna_richard](https://linkedin.com/in/ikenna_richard)
+- LinkedIn: [ikenna_richard](https://linkedin.com/in/ikenna-richard)
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
