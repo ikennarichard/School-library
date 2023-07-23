@@ -49,7 +49,6 @@ module Create
     print 'Input number : '
 
     person_type = Integer(gets.chomp)
-
     case person_type
     when 1
       create_student
@@ -111,7 +110,6 @@ module Create
     people.each.with_index(1) do |person, index|
       puts "#{index}) PersonID: #{person['id']} Name: #{person['name']}"
     end
-
     print '#=> Choose a person: '
     selected_person = Integer(gets.chomp) - 1
 
